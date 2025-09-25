@@ -13,10 +13,6 @@ export default function QuoteCard({ quote, onLike, isActive, isExternalAPI = fal
     // To prevent the click from bubbling up to the parent (viewer)
     e.stopPropagation();
     
-    if (isExternalAPI) {
-      alert('Likes are not available for quotes from the external API');
-      return;
-    }
     onLike(quote.id);
   };
 
@@ -96,9 +92,8 @@ export default function QuoteCard({ quote, onLike, isActive, isExternalAPI = fal
       </div>
       <div className="actions">
         <button 
-          className={`like ${isExternalAPI ? 'disabled' : ''}`} 
+          className={`like`} 
           onClick={handleLike}
-          disabled={isExternalAPI}
         >
           ♥ {quote.likes}
         </button>

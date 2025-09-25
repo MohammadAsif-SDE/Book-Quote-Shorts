@@ -59,6 +59,9 @@ function App() {
   // Tooltip labels
   const tooltipLabels = [
     !useReciteAPI ? 'Recite API' : 'Local Quotes',
+    autoplay ? 'Pause' : 'Play',
+    'Previous',
+    'Next'
   ]
 
   // Enhanced tooltip positioning effect
@@ -101,10 +104,6 @@ function App() {
       setQuotes((qs) => qs.map(q => q.id === id ? { ...q, likes: newLikes } : q))
     } catch (e) {
       console.error('Failed to like quote:', e)
-      // Show a simple alert for external API quotes
-      if (e instanceof Error && e.message.includes('Cannot like quotes from external API')) {
-        alert('Likes are not available for quotes from the external API')
-      }
     }
   }
 
