@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Pool } from 'pg';
+import { Pool, type QueryResultRow } from 'pg';
 
 dotenv.config();
 
@@ -34,7 +34,7 @@ if (looksLikeUrl(databaseUrl)) {
 
 export const pool = new Pool(poolConfig);
 
-export async function query<T = unknown>(text: string, params?: unknown[]): Promise<{ rows: T[] }>{
+export async function query<T extends QueryResultRow = QueryResultRow>(text: string, params?: unknown[]): Promise<{ rows: T[] }>{
   return pool.query<T>(text, params as any);
 }
 
