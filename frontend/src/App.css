@@ -1,0 +1,246 @@
+#root { max-width: 100%; margin: 0 auto; padding: 0; }
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(1200px 600px at 20% -20%, #1f2937, #0b0b0b);
+  color: #fff;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+.topbar h1 { font-size: 1.1rem; margin: 0; }
+.controls { 
+  display: flex; 
+  gap: 16px; 
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.source-toggle {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.source-toggle button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.source-toggle button.active {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.source-toggle button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Bottom Controls Styling */
+.bottom-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 3px;
+  padding: 6px;
+  background: #ffffff;
+  border-radius: 99px;
+  box-shadow: 
+    0px 32px 64px -16px rgba(0,0,0,0.20),
+    0px 16px 32px -8px rgba(0,0,0,0.20),
+    0px 8px 16px -4px rgba(0,0,0,0.24),
+    0px 4px 8px -2px rgba(0,0,0,0.24),
+    0px 2px 4px -1px rgba(0,0,0,0.24),
+    0px 0px 0px 1px rgba(0,0,0,1.00),
+    inset 0px 0px 0px 1px rgba(255,255,255,0.08),
+    inset 0px 1px 0px 0px rgba(255,255,255,0.20);
+}
+
+.control-btn {
+  width: 60px;
+  height: 40px;
+  border-radius: 99px;
+  border: none;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.control-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.tooltip-content {
+  height: 28px;
+  padding: 0 12px;
+  background: #131316;
+  border-radius: 8px;
+  box-shadow: 
+    0px 32px 64px -16px rgba(0,0,0,0.20),
+    0px 16px 32px -8px rgba(0,0,0,0.20),
+    0px 8px 16px -4px rgba(0,0,0,0.24),
+    0px 4px 8px -2px rgba(0,0,0,0.24),
+    0px 2px 4px -1px rgba(0,0,0,0.24),
+    0px 0px 0px 1px rgba(0,0,0,1.00),
+    inset 0px 0px 0px 1px rgba(255,255,255,0.05),
+    inset 0px 1px 0px 0px rgba(255,255,255,0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: auto;
+  animation: tooltipFadeIn 0.3s ease-in-out;
+}
+
+.tooltip-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.2;
+  white-space: nowrap;
+  margin: 0;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .bottom-controls {
+    bottom: 16px;
+  }
+  
+  .control-buttons {
+    padding: 4px;
+  }
+  
+  .control-btn {
+    width: 50px;
+    height: 36px;
+  }
+  
+  .control-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .tooltip-content {
+    height: 24px;
+    padding: 0 8px;
+  }
+  
+  .tooltip-text {
+    font-size: 12px;
+  }
+}
+.viewer {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.empty { opacity: 0.8; }
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

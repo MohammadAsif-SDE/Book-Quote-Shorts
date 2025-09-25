@@ -1,0 +1,130 @@
+.quote-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #121212;
+  color: #f2f2f2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+.quote-card.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.quote-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+.quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.quote-text-large {
+  font-size: 3rem;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  font-weight: 700;
+  text-align: center;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .quote-text-large {
+    font-size: 4rem;
+    line-height: 1.3;
+  }
+}
+.quote-meta {
+  font-size: 0.95rem;
+  color: #c8c8c8;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+.quote-meta .dot { margin: 0 4px; }
+
+.author-large {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c8c8c8;
+}
+
+.book-large {
+  font-size: 1.25rem;
+  color: #a8a8a8;
+}
+
+@media (min-width: 768px) {
+  .author-large {
+    font-size: 1.75rem;
+  }
+  
+  .book-large {
+    font-size: 1.5rem;
+  }
+}
+
+.api-badge {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.actions button {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  justify-content: center;
+}
+.actions .like {
+  background: #ff2d55;
+  color: white;
+  transition: all 0.2s ease;
+  justify-content: center;
+}
+.actions .like:hover:not(.disabled) {
+  background: #e0244a;
+  transform: translateY(-1px);
+}
+.actions .like.disabled {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.actions .share {
+  background: #2d89ff;
+  color: white;
+  transition: all 0.2s ease;
+}
+.actions .share:hover {
+  background: #1a73e8;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .quote-card { padding: 18px; }
+  .quote-text { font-size: 1.25rem; }
+}
+
